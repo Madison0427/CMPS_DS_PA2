@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 260: Module 6 Programming Assignment</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+// NOTE: You must implement the data structures using the no prototype approach.
+//       This is what the book uses, so you can copy it.
+//       See also: https://it.pointpark.edu/tutorials/no-prototype-vs-prototype/
+
+// NOTE: Please review the following links regularly:
+//       https://it.pointpark.edu/tutorials/arrays-vs-objects/
+//       https://it.pointpark.edu/tutorials/no-prototype-vs-prototype/
+//       https://it.pointpark.edu/tutorials/implementation-vs-interface/
+
+
+
+//------------------------//
+// The sorting algorithms //
+//------------------------//
+console.log("The sorting algorithms");
+
+// 1. Implement the ArrayList constructor.
+function ArrayList () {
+  var array = []; //{1}
+  this.insert = function(item) { // {2}
+    array.push(item);
+    }; 
+
+this.toString = function() { // {3}
+  return array.join(",");
+  };
+}
+ 
+// 2. Implement the createNonSortedArray(size) function from the book.
+function createNonSortedArray(size) {
+  var array = new ArrayList();
+  for (var i = size; i > 0; i--) {
+    array.insert(i);
+  }
+  return array;
+}
+
+// 3. Implement Bubble Sort inside the ArrayList constructor and test your code.
+
+function ArrayList () {
+  var array = []; //{1}
+  this.insert = function(item) { // {2}
+    array.push(item);
+    }; 
+
+this.toString = function() { // {3}
+  return array.join(",");
+  };
+
+ 
+this.bubbleSort = function() {
+  var length = array.length;
+  for (var i = 0; i < length; i++) {
+    for (var j = 0; j < length - 1; j++) {
+      if (array[j] > array[j + 1]) {
+        swap(array, j, j + 1);
+      }
+    }
+  }
+};
+
+var swap = function(array, index1, index2) {
+  var aux = array[index1];
+  array[index1] = array[index2];
+  array[index2] = aux;
+};
+}
+
+var myList = new ArrayList();
+myList.insert(34);
+myList.insert(12);
+myList.insert(73);
+myList.insert(1);
+myList.insert(5);
+
+console.log("Before sorting:");
+console.log(myList.toString());
+
+myList.bubbleSort();
+
+console.log("After sorting:");
+console.log(myList.toString());
+
+// 4. Implement Selection Sort inside the ArrayList constructor and test your
+//    code.
+
+function ArrayList () {
+  var array = []; //{1}
+  this.insert = function(item) { // {2}
+    array.push(item);
+    }; 
+
+this.toString = function() { // {3}
+  return array.join(",");
+  };
+
+ 
+this.selectionSort = function() {
+  var length = array.length,
+  indexMin;
+  for (var i = 0; i < length - 1; i++) {
+    indexMin = i;
+    for (var j = 1; j < length; j++) {
+      if(array[indexMin] > array[j]) {
+        indexMin = j;
+      }
+    }
+    if (i !== indexMin) {
+      swap(i, indexMin);
+    }
+  }
+};
+
+array = createNonSortedArray(5);
+console.log(array,toString());
+arry.selectionSort();
+console.log(array.toString());
+}
+
+function createNonSortedArray(size) {
+    var arr = [];
+    for (var i = size; i > 0; i--) {
+        arr.push(i);
+    }
+    return arr;
+}
+ var list = new ArrayList();
+var unsortedValues = createNonSortedArray(5);
+
+for (var i = 0; i < unsortedValues.length; i++) {
+    list.insert(unsortedValues[i]);
+}
+
+console.log("Unsorted: " + list.toString());
+list.selectionSort();
+console.log("Sorted: " + list.toString()); 
+
+//----------------------//
+// Searching algorithms //
+//----------------------//
+console.log("Searching algorithms");
+
+// 1. Implement the sequential search inside the ArrayList constructor and test
+//    your code.
+
+function ArrayList () {
+  var array = []; //{1}
+  this.insert = function(item) { // {2}
+    array.push(item);
+    }; 
+
+this.toString = function() { // {3}
+  return array.join(",");
+  };
+
+ 
+this.sequntialSearch = function(item) {
+  for (var i = 0; i < array.length; i++) {
+    if (item === array[i]) {
+      return i;
+    }
+  }
+  return - 1;
+};
+}
+
+var list = new ArrayList();
+list.insert(10);
+list.insert(20);
+list.insert(30);
+list.insert(40);
+console.log("List: " + list.toString());
+console.log("Searching for 30: " + list.sequntialSearch(30)); 
+console.log("Searching for 99: " + list.sequntialSearch(99));
+
+
+</script>
+</head>
+<body>
+  See console!
+</body>
+</html>
