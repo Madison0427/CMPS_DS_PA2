@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 260: Module 7 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+// NOTE: You must implement the data structures using the prototype approach.
+//       This is not what the book uses, so you have to convert it.
+//       See also: https://it.pointpark.edu/tutorials/no-prototype-vs-prototype/
+
+// NOTE: Please review the following links regularly:
+//       https://it.pointpark.edu/tutorials/arrays-vs-objects/
+//       https://it.pointpark.edu/tutorials/no-prototype-vs-prototype/
+//       https://it.pointpark.edu/tutorials/implementation-vs-interface/
+
+
+
+//---------//
+// Project //
+//---------//
+console.log("Project");
+
+// 1. Implement factorial using a recursive function and test your code.
+
+function factorial(n) {
+  if (n === 1 || n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+console.log(factorial(5));
+
+console.log("Test 0! (Expected 1):", factorial(0));
+console.log("Test 1! (Expected 1):", factorial(1));
+console.log("Test 5! (Expected 120):", factorial(5));
+
+// 2. Implement a function that returns the complete fibonacci sequence in an
+//    array for a given number.
+
+function getFibonacciSequenceLength(n) {
+  if (n <= 0) return [];
+  if (n --- 1) return [0];
+  const sequnce = [0, 1];
+  for (let i = 2; i < n; i++) {
+    sequence.push(sequence[i - 1] + sequence[i - 2]);
+  }
+  return sequence;
+}
+
+console.log(getFibonacciSequenceLength(8)); 
+
+// 3. Implement finding the longest common subsequence using dynamic
+//    programming. Test your code.
+
+function lcs(wordX, wordY) {
+  const m = wordX.length;
+  const n = wordY.length;
+  const l = [];
+for (let i = 0; i <= m; i++) {
+    l[i] = [];
+    for (let j = 0; j <= n; j++) {
+      l[i][j] = 0;
+    }
+  }
+for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++){
+      if (wordX[i - 1] === wordY[j - 1]) {
+         l[i][j] = l[i - 1][j - 1] + 1;
+      } else {
+        const a = l[i - 1][j];
+        const b = l[i][j - 1];
+        l[i][j] = a > b ? a : b;
+      }
+    }
+  }
+  
+  return l[m][n];
+}
+
+console.log(lcs("AGGTAB", "GXTXAYB")); 
+
+// 4. Solve the problem of summing all the numbers in an array using
+//    imperative style.
+
+const numbers = [10, 20, 30, 40, 50];
+
+let sum = 0;
+for (const num of numbers) {
+  sum += num; 
+}
+console.log(sum); 
+
+// 5. Solve the problem of summing all the numbers in an array using
+//    functional style.
+const numbers2 = [1, 2, 3, 4, 5];
+
+const sum2 = numbers2.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+console.log(sum2);
+
+// 6. Solve problem 14 of Project Euler: https://projecteuler.net/problem=14
+//    Note: This may be a bit challenging. Try to get as far as you can.
+//          Instead of one million you could use a smaller number for testing.
+
+function findLongestCollatz(limit) {
+  const cache = new Map();
+    cache.set(1, 1);
+   let maxChainLength = 0;
+    let startingNumberWithMaxChain = 0;  
+    
+
+</script>
+</head>
+<body>
+  See console!
+</body>
+</html>
